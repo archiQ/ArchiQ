@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="indexmobile.css">
+</head>
+
+<body>
+   <div id="wrapper">
+       <div id="header">
+           <img src="../img/QA.png">
+       </div>
+       <div id="content">
+           <ul class="noBullet" id="bigList">
+               <li class="cellParent">architecture • workshops</li>
+               <li>
+                   <ul id="archiwork" class="noBullet littleList">
+                   </ul>
+               </li>
+               <li class="cellParent">publications • graphisme</li>
+               <li>
+                   <ul id="public" class="noBullet littleList"></ul>
+               </li>
+               <li class="cellParent">portrait • compétences</li>
+               <li>
+                   <ul id="portcomp" class="noBullet "></ul>
+               </li>
+           </ul>
+       </div>
+   </div>
+    <script src="../contenu.js"></script>
+    <script>
+        for (i in projets) {
+            console.log(projets[i].titre);
+            var tn = document.createTextNode(projets[i].titre);
+            var alink = document.createElement('a');
+            alink.appendChild(tn);
+            var li = document.createElement('li');
+            li.appendChild(alink);
+            document.getElementById('archiwork').appendChild(li);
+        }
+
+        for (i in publications) {
+            console.log(publications[i].titre);
+            var tn = document.createTextNode(publications[i].titre);
+            var alink = document.createElement('a');
+            alink.appendChild(tn);
+            var li = document.createElement('li');
+            li.appendChild(alink);
+            document.getElementById('public').appendChild(li);
+
+        }
+
+    </script>
+
+</body>
+
+</html>

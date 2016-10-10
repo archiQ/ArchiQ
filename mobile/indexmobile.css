@@ -1,0 +1,27 @@
+#header {
+    width: 100%;
+    text-align: center;
+}
+#header > img {
+    margin: 7vw 0px 5vw 0px;
+    width: 40vw;
+}
+.noBullet {
+    list-style-type: none;
+}
+.cellParent {
+    padding: 0vw 0vw 0vw 0vw;
+    width: 100%;
+}
+#bigList {
+    padding: 0vw 0vw 0vw 0vw;
+    margin: 0vw 0vw 0vw 14vw;
+}
+.littleList {
+    padding: 0vw 0vw 0vw 0vw;
+    margin: 0vw 0vw 0vw 9vw;
+}
+#bigList > li, .littleList > li {
+    margin: 9vw 0vw 0vw 0vw;
+    font-size: 6 vw
+}

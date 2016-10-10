@@ -1,0 +1,308 @@
+* {}
+@font-face {
+    font-family: Futura-Book;
+    src: url(font/Futura-Book.ttf);
+    src: url(font/Futura-Book.woff) format('woff')
+}
+@font-face {
+    font-family: Futura-CondensedLight-Normal;
+    src: url(font/Futura-CondensedLight-Normal.ttf);
+    src: url(font/Futura-CondensedLight-Normal.woff) format('woff')
+}
+body,
+html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -20;
+}
+#wrapper {
+    height: 100%;
+    width: 100%;
+}
+#languageSelector {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    height: 10%;
+    width: 10%;
+    color: #d9ab12;
+    font-size: 1.1vw;
+	font-family: Futura-CondensedLight-Normal;
+}
+#languageSelector > a {
+    text-decoration:none;
+}
+.BigColonne {
+    height: 100%;
+}
+#wrapperSlider {
+    position: absolute;
+    top: 10%;
+    bottom: 8%;
+    left: 3%;
+    right: 37%;
+    z-index: 1000!important;
+}
+#bouboule {
+    position: absolute;
+    width: 1.5%;
+    top: 0%;
+    left: 32.58%;
+    bottom: 0%;
+    background-image: url('img/fond/bouboule.png');
+    background-size: contain;
+    background-repeat: repeat-y;
+}
+#bouboule2 {
+    position: absolute;
+    width: 1.5%;
+    top: 0%;
+    left: 65.88%;
+    bottom: 0%;
+    background-image: url('img/fond/bouboule.png');
+    background-size: contain;
+    background-repeat: repeat-y;
+}
+#colonneGauche {}
+#colonneDroite {}
+#boiteLogo {
+    position: absolute;
+    left: 5.5%;
+    top: 12.6%;
+    width: 15.3%;
+}
+#boiteLogo > img,
+#boiteLogo >a> img {
+    width: 100%;
+}
+.leCache {
+    position: absolute;
+    opacity: 0.8;
+    background-color: #000000;
+    color: #d9ab12;
+}
+#boiteCompetences {
+    position: relative;
+    left: 8.5%;
+    top: 42.75%;
+    width: 85%;
+    height: 50%;
+    color: #d9ab12;
+    /*font-weight: bold;*/
+    font-family: "Futura-CondensedLight-Normal", Times, serif;
+    font-size: 2.2vw;
+    max-height: 50vh;
+    overflow: hidden;
+}
+#boiteCacheChache {
+    position: absolute;
+    top: 0%;
+    left: -5%;
+    bottom: 0%;
+    right: -30px;
+    overflow: auto;
+}
+.lienActif {
+    color: #fff;
+}
+#barreComp {
+    position: relative;
+    height: 89%;
+    top: 6%;
+    left: 2%;
+}
+#barreDesc {
+    position: relative;
+    height: 81%;
+    top: 18%;
+    right: -93%;
+}
+#boiteCompetences > div > ul > li > a {
+    text-decoration: none;
+    width: 100%;
+}
+#boiteCompetences > div > ul > li > ul > li {
+    font-size: 1.9vw;
+}
+#boiteCompetences > div > ul > li > a:hover {
+    color: #fff;
+}
+#boiteCompetences > div > ul > li > ul > li:hover {
+    color: #fff;
+}
+#boiteCompetences > div > ul {
+    list-style-type: none;
+    margin-left: 7%;
+    margin-top: 0px;
+    margin-bottom: 0%;
+}
+#boiteCompetences > div > ul > li > ul {
+    list-style-type: none;
+}
+#boiteGrosTitre {
+    margin: 10% 10% 5% 10%;
+    font-size: 5.8vw;
+    font-family: "Futura-Book", Times, serif;
+    text-align: center;
+    /*color : #d2b913 ;*/
+    color: #d9ab12;
+}
+#boiteGrosTitreLigne1 {
+    letter-spacing: 1vw;
+}
+#boiteGrosTitreLigne2 {
+    letter-spacing: 2.2vw;
+    margin-left: 0.8vw;
+}
+#boitePetitTitre {
+    margin: 0% 13% 0% 13%;
+    /*font-size: 40px;
+    font-family: "Futura-Book", Times, serif*/
+    text-align: center;
+    color: #d9ab12;
+}
+#boitePetitTitreLigne1 {
+    font-family: "Futura-Book", Times, serif;
+    font-size: 50px;
+}
+#boitePetitTitreLigne2 {
+    font-family: "Futura-CondensedLight-Normal", Times, serif;
+    font-size: 40px;
+}
+#boiteGallerie > .w3-col {
+    text-align: center;
+    margin: 0% 0% 5% 0%;
+}
+#boiteGallerie {
+    margin: 5% 3% 0% 6%;
+}
+#colonneDroite {
+    overflow: hidden;
+    position: relative;
+}
+#wrapperGallerie {
+    position: relative;
+    top: 3%;
+    left: -3%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#GallerieCache {
+    position: absolute;
+    top: 0%;
+    right: -30px;
+    bottom: -30px;
+    left: 0%;
+    overflow: auto;
+}
+#boitePetitText {
+    position: absolute;
+    top: 95%;
+    right: 1.4%;
+    font-size: 25px;
+    /* COULEUR DU PETIT TEXTE EN BAS */
+    color: #f4f4f4;
+    font-family: "Futura-CondensedLight-Normal", Times, serif;
+}
+div.w3-col.l3.m3.s3>img {
+    width: 76%;
+}
+#boiteListe > ul >li,
+#boiteListe >ul>li>ul>li {
+    color: orange;
+}
+#overlaySombre {
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    left: 0%;
+    right: 66.66%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -10!important;
+}
+#overlaySombre2 {
+    position: absolute;
+    top: 0%;
+    bottom: 0%;
+    right: 0%;
+    left: 0%;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -10!important;
+}
+#boiteNom {
+    margin: 3% 0% 0% 0%;
+    text-align: center;
+}
+#boiteNom {
+    color: purple;
+}
+#wrapper {
+    background-image: url(img/vitrahaus.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: -11!important;
+}
+#boiteTitre {
+    margin: 8% 17% 8% 11%;
+    color: #d9ab12;
+    font-family: Futura-Book;
+    font-size: 50px;
+    margin-left: 8%;
+}
+#flechebas {
+    position: absolute;
+    top: 92%;
+    right: 84%;
+    width: 2vw;
+}
+#flechegauche {
+    position: absolute;
+    top: 4%;
+    left: 3%;
+    width: 2vw;
+}
+#boiteDesc {
+    margin: 0% 15% 0% 11%;
+    color: #fff;
+    font-family: Futura-CondensedLight-Normal;
+    font-size: 20px;
+    text-align: justify;
+    margin-left: 8%;
+}
+#colonneDroite2 {
+    overflow: hidden;
+    position: relative;
+}
+#wrapperDesc {
+    position: relative;
+    height: 90%;
+    width: 100%;
+    overflow: hidden;
+}
+#wrapperCache {
+    position: absolute;
+    top: 0%;
+    right: -30px;
+    bottom: -30px;
+    left: 0px;
+    overflow: auto;
+}
+#colonneGauche2 {
+    position: relative;
+    z-index: -5!important;
+}
+#boiteSlider {
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+}

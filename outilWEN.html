@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <textarea id="input"></textarea>
+    <button id="bouton" onclick="convertir();">Go</button>
+    <textarea id="output"></textarea>
+    <script>
+        function convertir() {
+            //console.log(document.getElementById('input').value);
+            var objet = document.getElementById('input').value;
+            objet = JSON.parse(objet);
+            console.log(objet);
+            var answers = [];
+            for (var i = 0; i < objet.participants.length; i++) {
+                for (var j = 0; j < objet.participants[i].answers.length; j++) {
+                    objet.participants[i][objet.participants[i].answers[j].label] = objet.participants[i].answers[j].value;
+                }
+
+                objet.participants[i].answers = [];
+                if (objet.participants[i].id_event == "183531"){
+                    objet.participants[i].diner = "AVEC";
+                }
+                if (objet.participants[i].id_event == "187696"){
+                    objet.participants[i].diner = "SANS";
+                }
+            }
+            console.log(objet);
+            document.getElementById('output').value = JSON.stringify(objet);
+        }
+
+    </script>
+</body>
+
+</html>

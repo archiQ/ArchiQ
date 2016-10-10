@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="slider.css">
+</head>
+
+<body>
+    <div id="wrapper">
+       <div id="languageSelector">
+           <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
+       </div>
+        <div class="w3-row BigColonne">
+            <div class="w3-col l8 m8 BigColonne" id="colonneGauche2">
+            </div>
+            <div id="bouboule2">
+            </div>
+            <div class="w3-col l4 m4 BigColonne" id="colonneDroite2">
+                <div id="overlaySombre2"></div>
+                <div id="wrapperDesc">
+                    <div id="wrapperCache">
+                        <div id="boiteTitre">
+                            Un instant... (Si le temps d'attente est trop long, veuillez revenir au menu principal)
+                        </div>
+                        <div id="boiteDesc">
+                        </div>
+                    </div>
+                    <img src="img/BARREDESC.png" id="barreDesc">
+                </div>
+            </div>
+        </div>
+        <i><div id="boitePetitText">
+            Machin Machin 
+        </div></i>
+        <div id="wrapperSlider">
+        </div>
+        <a href=archiworksho.html><img src="img/FLECHEG.png" id="flechegauche"></a>
+    </div>
+    <script src="contenu.js"></script>
+    <script>
+        var randomInt = Math.floor((Math.random() * fond.length));
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
+
+
+        var index = localStorage.getItem('ElementChoisi');
+        document.getElementById('boiteTitre').innerHTML = projets[index].titre;
+        document.getElementById('boiteDesc').innerHTML = projets[index].description;
+        var leTextHTML = '<div class="slideshow-container">';
+        for (var i = 0; i < projets[index].images.length; i++) {
+            leTextHTML += '<div class="mySlides fade"><div class="containerCentrage"><img src="';
+            leTextHTML += projets[index].images[i];
+            leTextHTML += '"></div></div>';
+        }
+        leTextHTML += '<a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a></div><br><div style="text-align:center">';
+        for (var i = 0; i < projets[index].images.length; i++) {
+            leTextHTML += '<a href="javascript:void(0)" class="dot" onclick="currentSlide('+ i+')"></a>';
+        }
+        leTextHTML += '</div></div>';
+        document.getElementById('wrapperSlider').innerHTML += leTextHTML;
+
+    </script>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+            tournage = false;
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            if (slides[slideIndex - 1].childNodes[0].childNodes[0].offsetWidth > slides[slideIndex - 1].childNodes[0].childNodes[0].offsetHeight) {
+                slides[slideIndex - 1].childNodes[0].childNodes[0].style.width = "100%";
+            } else {
+                slides[slideIndex - 1].childNodes[0].childNodes[0].style.height = "100%";
+            }
+            dots[slideIndex - 1].className += " active";
+        }
+        var tournage = true;
+        setInterval(function() {
+            if (tournage) {
+                showSlides(slideIndex += 1);
+            }
+        }, 4000); //ICI REPOSE LE NOMBRE DE MILLISECONDES ENTRE CHAQUE CHANGEMENT
+
+    </script>
+    <link rel="stylesheet" href="index.css">
+</body>
+
+</html>

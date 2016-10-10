@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="wrapper">
+       <div id="languageSelector">
+           <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
+       </div>
+        <div class="w3-row BigColonne">
+            <div class="w3-col l4 m4 BigColonne" id="colonneGauche">
+                <div id="overlaySombre"></div>
+                <div id="boiteLogo">
+                    <img src="img/QA.png">
+                </div>
+                <div id="boiteCompetences">
+                    <ul>
+                        <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
+                        <li><a href="#" id="compet2">publications •graphisme</a></li>
+                        <li><a href="#" id="compet3">portrait •compétences</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="bouboule">
+
+            </div>
+            <div class="w3-col l8 m8 BigColonne" id="colonneDroite">
+                <div id="photoIdentite">
+					<img src="img/Q.jpg">
+                </div>
+                <div id="boitePresentation1">
+					<div id="Info1">
+						Quentin AUBRY <br> 5 rue Toulmouche <br> 44000 NANTES
+					</div>
+					<div id="Info2">
+						Détenteur du permis B et d’un véhicule.
+					</div>
+                </div>
+				<div id="boitePresentation2">
+					Âge : 23 ans <br> +33 (0)6 63 18 02 06 <br> aubry.q@hotmail.fr
+                </div>
+            </div>
+        </div>
+        <i><div id="boitePetitText">
+            Machin Machin 
+        </div></i>
+    </div>
+    <script src="contenu.js"></script>
+    <script>
+        var randomInt = Math.floor((Math.random() * fond.length));
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
+
+    </script>
+</body>
+
+</html>

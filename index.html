@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+       <div id="languageSelector">
+           <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> / <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
+       </div>
+        <div class="w3-row BigColonne">
+            <div class="w3-col l4 m4 BigColonne" id="colonneGauche">
+                <div id="overlaySombre"></div>
+                <div id="boiteLogo">
+                    <img src="img/QA.png">
+                </div>
+                <div id="boiteCompetences">
+                    <div id="boiteCacheChache">
+
+                        <ul>
+                            <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
+                            <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
+                            <li><a href="#" id="compet3">portrait •compétences</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="bouboule">
+
+            </div>
+            <div class="w3-col l8 m8 BigColonne" id="colonneDroite">
+                <div id="boiteGrosTitre">
+                    <div id="boiteGrosTitreLigne1">ARCHITECTURE</div>
+                    <div id="boiteGrosTitreLigne2">INGENIERIE</div>
+                </div>
+                <div id="boitePetitTitre">
+                    <div id="boitePetitTitreLigne1">
+                        Portfolio en ligne
+                    </div>
+                    <div id="boitePetitTitreLigne2">
+                        <i> Site en construction </i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <i><div id="boitePetitText">
+             
+        </div></i>
+    </div>
+    <script src="contenu.js"></script>
+    <script>
+        var randomInt = Math.floor((Math.random() * fond.length));
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
+        
+        function toTheBatCave(selector){
+            document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
+            document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
+            document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
+            document.getElementById('boiteGrosTitreLigne1').innerHTML = meta_text['boiteGrosTitreLigne1' + selector];
+            document.getElementById('boiteGrosTitreLigne2').innerHTML = meta_text['boiteGrosTitreLigne2' + selector];
+            document.getElementById('boitePetitTitreLigne1').innerHTML = meta_text['boitePetitTitreLigne1' + selector];
+            document.getElementById('boitePetitTitreLigne2').innerHTML = meta_text['boitePetitTitreLigne2' + selector];
+        }
+    </script>
+</body>
+
+</html>

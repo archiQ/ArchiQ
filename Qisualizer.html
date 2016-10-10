@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="w3-row BigColonne">
+            <div class="w3-col l8 m8 BigColonne" id="colonneGauche2">
+                <div id="boiteSlider">
+                    <div class="w3-content" style="max-width:800px;position:relative" id="lesImages">
+
+                        <img class="mySlides" src="http://placehold.it/350x150" style="width:100%">
+
+                        <a class="w3-btn-floating" style="position:absolute;top:45%;left:0" onclick="plusDivs(-1)">-</a>
+                        <a class="w3-btn-floating" style="position:absolute;top:45%;right:0" onclick="plusDivs(1)">+</a>
+
+                    </div>
+
+                    <script>
+                        var slideIndex = 1;
+                        showDivs(slideIndex);
+
+                        function plusDivs(n) {
+                            showDivs(slideIndex += n);
+                        }
+
+                        function showDivs(n) {
+                            var i;
+                            var x = document.getElementsByClassName("mySlides");
+                            if (n > x.length) {
+                                slideIndex = 1
+                            }
+                            if (n < 1) {
+                                slideIndex = x.length
+                            }
+                            for (i = 0; i < x.length; i++) {
+                                x[i].style.display = "none";
+                            }
+                            x[slideIndex - 1].style.display = "block";
+                        }
+
+                    </script>
+
+                </div>
+            </div>
+            <div class="w3-col l4 m4 BigColonne" id="colonneDroite2">
+                <div id="wrapperDesc">
+                    <div id="boiteTitre">
+                        Kikouuuu
+                    </div>
+                    <div id="boiteDesc">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, justo sit amet dignissim faucibus, sapien tellus feugiat diam, sit amet gravida odio dui quis tellus. Aliquam erat volutpat. Nulla imperdiet felis sem, sed vestibulum nisi bibendum sed. Donec massa elit, vehicula sed orci eu, condimentum porta justo. Proin semper venenatis magna, in porttitor purus tristique sit amet. Mauris rhoncus, eros nec dignissim elementum, justo lacus sollicitudin est, vel ornare libero sapien ac nisi. Ut aliquet eget nunc quis lobortis. Etiam in vehicula tellus. Donec in mollis purus. Vivamus scelerisque varius lectus at cursus. Integer interdum augue semper suscipit molestie. Pellentesque nec metus ultrices, malesuada est sed, pulvinar lacus. Pellentesque laoreet nisl sed scelerisque dapibus. Sed cursus nisi vel quam congue, eget aliquam elit mattis. Sed vel lobortis sem. Vestibulum sit amet gravida leo. Donec lacinia consectetur mattis. Aliquam vulputate odio leo, vel eleifend lacus hendrerit eu. Sed sodales, est eget tincidunt dapibus, lacus ligula vulputate felis, at condimentum lorem purus rutrum sem. Proin vitae porttitor justo. Nulla egestas ligula nec lectus scelerisque, a tristique justo ultricies. Integer odio arcu, efficitur sit amet orci ac, ultrices consequat metus. Duis justo erat, aliquam consectetur venenatis sit amet, finibus a enim. Aenean est ipsum, placerat in euismod quis, malesuada id nisl. Fusce tincidunt enim quis arcu porttitor, id pellentesque odio pulvinar.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="boitePetitText">
+            Machin Machin
+        </div>
+    </div>
+    <script src="contenu.js"></script>
+    <script src="Actualizer.js"></script>
+</body>
+
+</html>
