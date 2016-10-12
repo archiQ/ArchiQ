@@ -6,56 +6,117 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="icon" type="image/ico" href="favicon.ico" />
 </head>
 
 <body>
     <div id="wrapper">
-       <div id="languageSelector">
-           <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-       </div>
         <div class="w3-row BigColonne">
             <div class="w3-col l4 m4 BigColonne" id="colonneGauche">
                 <div id="overlaySombre"></div>
                 <div id="boiteLogo">
-                    <img src="img/QA.png">
+                    <a href="index.html"><img src="img/QA.png"></a>
                 </div>
                 <div id="boiteCompetences">
-                    <ul>
-                        <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
-                        <li><a href="#" id="compet2">publications •graphisme</a></li>
-                        <li><a href="#" id="compet3">portrait •compétences</a></li>
-                    </ul>
+                    <div id="boiteCacheChache">
+
+                        <ul>
+                            <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
+                            <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
+                            <li><a href="portrait.html" id="compet3">portrait •compétences</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div id="bouboule">
 
             </div>
             <div class="w3-col l8 m8 BigColonne" id="colonneDroite">
-                <div id="photoIdentite">
-					<img src="img/Q.jpg">
-                </div>
-                <div id="boitePresentation1">
-					<div id="Info1">
-						Quentin AUBRY <br> 5 rue Toulmouche <br> 44000 NANTES
-					</div>
-					<div id="Info2">
-						Détenteur du permis B et d’un véhicule.
-					</div>
-                </div>
-				<div id="boitePresentation2">
-					Âge : 23 ans <br> +33 (0)6 63 18 02 06 <br> aubry.q@hotmail.fr
+                <div id="CVhandler">
+                    <div id="boiteCV">
+                        <div id="boiteCVPng">
+                            <img src="img/CV_en.png">
+                        </div>
+                        <div id="boitePhoto"><img src="img/Q.jpg"></div>
+                        <div id="boiteCoord">
+                            <div id="coord1">
+                                <div>
+                                    <p>Quentin Aubry</p>
+                                </div>
+                                <p>Age : 23</p>
+                            </div>
+                            <div id="coord2">
+                                <p>5 rue Toulmouche</p>
+                                <p>44000 NANTES</p>
+                                <p>FRANCE</p>
+                            </div>
+                            <div id="coord3">
+                                <p>+33 (0)6 63 18 02 06</p>
+                                <p><a href="mailto:quentin.aubry@nantes.archi.fr">quentin.aubry@nantes.archi.fr</a></p>
+                            </div>
+                        </div>
+                        <div id="btnDL">
+                            <a href="img/CV_en.pdf"><img src="img/DL.png"></a>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
         <i><div id="boitePetitText">
-            Machin Machin 
+             
         </div></i>
+        <div id="languageSelector">
+            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> / <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
+        </div>
     </div>
     <script src="contenu.js"></script>
     <script>
-        var randomInt = Math.floor((Math.random() * fond.length));
+        if (localStorage.getItem('FondID', randomInt) != null) {
+            var randomInt = localStorage.getItem('FondID', randomInt);
+        } else {
+            var randomInt = Math.floor((Math.random() * fond.length));
+        }
         document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
         document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
+
+    </script>
+    <script>
+        if (localStorage.getItem('QLangue') == null) {
+            localStorage.setItem('QLangue', '_en');
+        }
+
+        if (localStorage.getItem('QLangue') == "_fr") {
+            toTheBatCave("_fr");
+        } else if (localStorage.getItem('QLangue') == "_en") {
+            toTheBatCave("_en");
+        }
+
+        function toTheBatCave(selector) {
+            localStorage.setItem('QLangue', selector);
+            document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
+            document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
+            document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
+
+            if (selector == "_fr") {
+                document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
+                document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
+                document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.5vw";
+                document.getElementById('languageSelector').childNodes[1].style.fontSize = "1.1vw";
+                document.getElementById('boiteCVPng').childNodes[1].src = "img/CV_fr.png";
+                document.getElementById('btnDL').childNodes[0].href = "img/CV_fr.pdf"
+            }
+            // 1.1 et 0
+            if (selector == "_en") {
+                document.getElementById('languageSelector').childNodes[1].innerHTML = document.getElementById('languageSelector').childNodes[1].innerHTML.bold();
+                document.getElementById('languageSelector').childNodes[3].innerHTML = "FR";
+                document.getElementById('languageSelector').childNodes[1].style.fontSize = "1.5vw";
+                document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.1vw";
+                document.getElementById('boiteCVPng').childNodes[1].src = "img/CV_en.png";
+                document.getElementById('btnDL').childNodes[0].href = "img/CV_en.pdf";
+            }
+        }
 
     </script>
 </body>

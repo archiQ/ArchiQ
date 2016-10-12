@@ -7,13 +7,11 @@
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="icon" type="image/ico" href="favicon.ico" />
 </head>
 
 <body>
     <div id="wrapper">
-       <div id="languageSelector">
-           <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-       </div>
         <div class="w3-row BigColonne">
             <div class="w3-col l4 m4 BigColonne" id="colonneGauche">
                 <div id="overlaySombre"></div>
@@ -23,12 +21,12 @@
                 <div id="boiteCompetences">
                     <div id="boiteCacheChache">
                         <ul>
-                            <li><a href="archiworksho.html" class="lienActif">architecture •workshops</a></li>
+                            <li><a href="archiworksho.html" class="lienActif" id="compet1">architecture •workshops</a></li>
                             <li>
                                 <ul id="ListeElements"></ul>
                             </li>
-                            <li><a href="publications.html">publications •graphisme</a></li>
-                            <li><a href="#">portrait •compétences</a></li>
+                            <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
+                            <li><a href="portrait.html" id="compet3">portrait •compétences</a></li>
                         </ul>
                     </div>
                     <img src="img/BARRECOMP.png" id="barreComp">
@@ -50,10 +48,19 @@
         <i><div id="boitePetitText">
              
         </div></i>
+        <div id="languageSelector">
+            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
+        </div>
+
     </div>
     <script src="contenu.js"></script>
     <script>
-        var randomInt = Math.floor((Math.random() * fond.length));
+        if (localStorage.getItem('FondID', randomInt) != null){
+            var randomInt = localStorage.getItem('FondID', randomInt);
+        }
+        else {
+            var randomInt = Math.floor((Math.random() * fond.length));
+        }
         document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
         document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
 
@@ -64,9 +71,9 @@
         for (var i = 0; i < lesMinis.length; i++) {
             document.getElementById('projetn' + i).onclick = function(element) {
                 localStorage.setItem('ElementChoisi', parseInt(element.srcElement.parentElement.id.split('n')[1]));
-                window.location = "explorer.html";
+                window.location = "explorer.html"+"?ElementChoisi="+parseInt(element.srcElement.parentElement.id.split('n')[1])+"&projpubli=projet"+"&previous=archiworksho.html";
             }
-            
+
             document.getElementById('projetn' + i).onmouseenter = function(element) {
                 element.srcElement.childNodes[0].src = projets[parseInt(element.srcElement.id.split('n')[1])].miniature_t;
                 document.getElementsByTagName('ul')[1].childNodes[parseInt(element.srcElement.id.split('n')[1])].style.color = "#fff";
@@ -76,15 +83,49 @@
                 document.getElementsByTagName('ul')[1].childNodes[parseInt(element.srcElement.id.split('n')[1])].style.color = "";
             }
             document.getElementById('projetz' + i).onmouseenter = function(element) {
-                document.getElementById('projetn'+parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature_t;
+                document.getElementById('projetn' + parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature_t;
             }
             document.getElementById('projetz' + i).onmouseleave = function(element) {
-                document.getElementById('projetn'+parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature;
+                document.getElementById('projetn' + parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature;
             }
 
             document.getElementById('projetz' + i).onclick = function(element) {
                 localStorage.setItem('ElementChoisi', parseInt(element.srcElement.id.split('z')[1]));
-                window.location = "explorer.html";
+                localStorage.setItem('projpubli', 'projet');
+                localStorage.setItem('previous', 'archiworksho.html');
+                window.location = "explorer.html"+"?ElementChoisi="+parseInt(element.srcElement.id.split('z')[1])+"&projpubli=projet"+"&previous=archiworksho.html";
+            }
+        }
+
+    </script>
+    <script>
+        if (localStorage.getItem('QLangue') == null){
+            localStorage.setItem('QLangue', '_en');
+        }
+        if (localStorage.getItem('QLangue') == "_fr") {
+            toTheBatCave("_fr");
+        } else if (localStorage.getItem('QLangue') == "_en") {
+            toTheBatCave("_en");
+        }
+
+        function toTheBatCave(selector) {
+            localStorage.setItem('QLangue', selector);
+            document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
+            document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
+            document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
+
+            if (selector == "_fr") {
+                document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
+                document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
+                document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.5vw";
+                document.getElementById('languageSelector').childNodes[1].style.fontSize = "1.1vw";
+            }
+            // 1.1 et 0
+            if (selector == "_en") {
+                document.getElementById('languageSelector').childNodes[1].innerHTML = document.getElementById('languageSelector').childNodes[1].innerHTML.bold();
+                document.getElementById('languageSelector').childNodes[3].innerHTML = "FR";
+                document.getElementById('languageSelector').childNodes[1].style.fontSize = "1.5vw";
+                document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.1vw";
             }
         }
 

@@ -7,18 +7,16 @@
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="icon" type="image/ico" href="favicon.ico" />
 </head>
 
 <body>
     <div id="wrapper">
-       <div id="languageSelector">
-           <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> / <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-       </div>
         <div class="w3-row BigColonne">
             <div class="w3-col l4 m4 BigColonne" id="colonneGauche">
                 <div id="overlaySombre"></div>
                 <div id="boiteLogo">
-                    <img src="img/QA.png">
+                    <a href="index.html"><img src="img/QA.png"></a>
                 </div>
                 <div id="boiteCompetences">
                     <div id="boiteCacheChache">
@@ -26,7 +24,7 @@
                         <ul>
                             <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
                             <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
-                            <li><a href="#" id="compet3">portrait •compétences</a></li>
+                            <li><a href="portrait.html" id="compet3">portrait •compétences</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,14 +50,30 @@
         <i><div id="boitePetitText">
              
         </div></i>
+        <div id="languageSelector">
+            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> / <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
+        </div>
     </div>
     <script src="contenu.js"></script>
     <script>
         var randomInt = Math.floor((Math.random() * fond.length));
+        localStorage.setItem('FondID', randomInt);
         document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
         document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
-        
-        function toTheBatCave(selector){
+
+    </script>
+    <script>
+        if (localStorage.getItem('QLangue') == null) {
+            localStorage.setItem('QLangue', '_en');
+        }
+        if (localStorage.getItem('QLangue') == "_fr") {
+            toTheBatCave("_fr");
+        } else if (localStorage.getItem('QLangue') == "_en") {
+            toTheBatCave("_en");
+        }
+
+        function toTheBatCave(selector) {
+            localStorage.setItem('QLangue', selector);
             document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
             document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
             document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
@@ -67,7 +81,26 @@
             document.getElementById('boiteGrosTitreLigne2').innerHTML = meta_text['boiteGrosTitreLigne2' + selector];
             document.getElementById('boitePetitTitreLigne1').innerHTML = meta_text['boitePetitTitreLigne1' + selector];
             document.getElementById('boitePetitTitreLigne2').innerHTML = meta_text['boitePetitTitreLigne2' + selector];
+
+            if (selector == "_fr") {
+                document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
+                document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
+                document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.5vw";
+                document.getElementById('languageSelector').childNodes[1].style.fontSize = "1.1vw";
+                document.getElementById('boiteGrosTitreLigne2').style.letterSpacing = "2.2vw";
+                document.getElementById('boiteGrosTitreLigne2').style.marginLeft = "0.8vw";
+            }
+            // 1.1 et 0
+            if (selector == "_en") {
+                document.getElementById('languageSelector').childNodes[1].innerHTML = document.getElementById('languageSelector').childNodes[1].innerHTML.bold();
+                document.getElementById('languageSelector').childNodes[3].innerHTML = "FR";
+                document.getElementById('languageSelector').childNodes[1].style.fontSize = "1.5vw";
+                document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.1vw";
+                document.getElementById('boiteGrosTitreLigne2').style.letterSpacing = "1.1vw";
+                document.getElementById('boiteGrosTitreLigne2').style.marginLeft = "0vw";
+            }
         }
+
     </script>
 </body>
 

@@ -11,6 +11,7 @@
 }
 body,
 html {
+    background-color: black;
     height: 100%;
     margin: 0px;
     padding: 0px;
@@ -26,7 +27,8 @@ html {
 #languageSelector {
     position: absolute;
     top: 7px;
-    left: 8px;
+    right: 8px;
+    text-align: right;
     height: 10%;
     width: 10%;
     color: #d9ab12;
@@ -167,11 +169,12 @@ html {
 }
 #boitePetitTitreLigne1 {
     font-family: "Futura-Book", Times, serif;
-    font-size: 50px;
+    font-size: 3.6vw;
+    margin-bottom: -2%;
 }
 #boitePetitTitreLigne2 {
     font-family: "Futura-CondensedLight-Normal", Times, serif;
-    font-size: 40px;
+    font-size: 2.6vw;
 }
 #boiteGallerie > .w3-col {
     text-align: center;
@@ -244,18 +247,18 @@ div.w3-col.l3.m3.s3>img {
     color: purple;
 }
 #wrapper {
-    background-image: url(img/vitrahaus.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
     z-index: -11!important;
 }
 #boiteTitre {
-    margin: 8% 17% 8% 11%;
+    margin: 3% 17% 8% 11%;
     color: #d9ab12;
     font-family: Futura-Book;
-    font-size: 50px;
+    font-size: 4vw;
     margin-left: 8%;
+    line-height: 4vw;
 }
 #flechebas {
     position: absolute;
@@ -277,6 +280,66 @@ div.w3-col.l3.m3.s3>img {
     text-align: justify;
     margin-left: 8%;
 }
+#boitePhoto {
+    margin: 3vw 0vw 0vw 4vw;
+    width: 15vw;
+    position: absolute;
+    top: 7%;
+    left: 34%;
+}
+#boitePhoto > img {
+    width: 100%;
+}
+#boiteCoord {
+    position: absolute;
+    top: 10.2%;
+    left: 65%;
+}
+#CVhandler {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#boiteCV {
+    color: #d9ab12;
+    font-family: Futura-CondensedLight-Normal;
+    font-size: 1.6vw;
+    line-height: 0.4vw;
+    position: relative;
+    height: 100%;
+    margin-top: -4.5%;
+    margin-right: -30px;
+    overflow: auto;
+}
+#boiteCVPng {
+    margin: 0% 30px 0% 1.1vw;
+    position: absolute;
+    top: 0vh;
+    height: 100%;
+}
+#boiteCVPng > img {
+    width: 100%;
+}
+#coord1 > div > p {
+    font-size: 2.2vw;
+}
+#coord1 > p {
+    margin-top: -6%;
+}
+#coord1 {
+    margin-bottom: 16.5%;
+}
+#coord2 {
+    margin-bottom: 18.5%;
+}
+#coord3 > p {
+    margin-bottom: -3%;
+}
+#coord3 > p > a {
+    text-decoration: none;
+}
+
 #colonneDroite2 {
     overflow: hidden;
     position: relative;
@@ -289,7 +352,7 @@ div.w3-col.l3.m3.s3>img {
 }
 #wrapperCache {
     position: absolute;
-    top: 0%;
+    top: 7%;
     right: -30px;
     bottom: -30px;
     left: 0px;
@@ -305,4 +368,14 @@ div.w3-col.l3.m3.s3>img {
     bottom: 10%;
     left: 10%;
     right: 10%;
+}
+#btnDL {
+    position: absolute;
+    top: 22%;
+    left: 16%;
+    width: 6vw;
+}
+#btnDL > a > img {
+    margin: 0;
+    width: 100%;
 }
