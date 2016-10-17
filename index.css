@@ -272,6 +272,9 @@ div.w3-col.l3.m3.s3>img {
     left: 3%;
     width: 2vw;
 }
+.alignright{
+    text-align: right;
+}
 #boiteDesc {
     margin: 0% 15% 0% 11%;
     color: #fff;
@@ -323,6 +326,9 @@ div.w3-col.l3.m3.s3>img {
 }
 #coord1 > div > p {
     font-size: 2.2vw;
+}
+.alignright{
+    text-align: right;
 }
 #coord1 > p {
     margin-top: -6%;
