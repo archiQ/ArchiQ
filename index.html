@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="favicon.ico" />
-</head>
+    <link rel="icon" type="image/ico" href="favicon.ico" /> </head>
 
 <body>
     <div id="wrapper">
@@ -21,60 +20,52 @@
                 </div>
                 <div id="boiteCompetences">
                     <div id="boiteCacheChache">
-
                         <ul>
-                            <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
-                            <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
-                            <li><a href="portrait.html" id="compet3">portrait •compétences</a></li>
+                            <li><a href="#" onclick="changePage('archiworksho.html')" id="compet1">architecture •workshops</a></li>
+                            <li><a href="#" onclick="changePage('publications.html')" id="compet2">publications •graphisme</a></li>
+                            <li><a href="#" onclick="changePage('portrait.html')" id="compet3">portrait •compétences</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div id="bouboule">
-
-            </div>
+            <div id="bouboule"> </div>
             <div class="w3-col l8 m8 BigColonne" id="colonneDroite">
                 <div id="boiteGrosTitre">
                     <div id="boiteGrosTitreLigne1">ARCHITECTURE</div>
                     <div id="boiteGrosTitreLigne2">INGENIERIE</div>
                 </div>
                 <div id="boitePetitTitre">
-                    <div id="boitePetitTitreLigne1">
-                        Portfolio en ligne
-                    </div>
-                    <div id="boitePetitTitreLigne2">
-                        <i> Site en construction </i>
-                    </div>
+                    <div id="boitePetitTitreLigne1"> Portfolio en ligne </div>
+                    <div id="boitePetitTitreLigne2"> <i> Site en construction </i> </div>
                 </div>
             </div>
-        </div>
-        <i><div id="boitePetitText">
+        </div> <i><div id="boitePetitText">
              
         </div></i>
-        <div id="languageSelector">
-            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-        </div>
+        <div id="languageSelector"> <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a> </div>
     </div>
     <script src="contenu.js"></script>
     <script>
-        var randomInt = Math.floor((Math.random() * fond.length));
-        localStorage.setItem('FondID', randomInt);
-        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
-        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
-
+        try {
+            var finalQuery = {};
+            var laQuery = location.search.split('?')[1].split('&');
+            for (i in laQuery) {
+                finalQuery[laQuery[i].split('=')[0]] = laQuery[i].split('=')[1];
+            }
+        }
+        catch (err) {
+            var finalQuery = {};
+        }
     </script>
     <script>
-        if (localStorage.getItem('QLangue') == null) {
-            localStorage.setItem('QLangue', '_en');
-        }
-        if (localStorage.getItem('QLangue') == "_fr") {
-            toTheBatCave("_fr");
-        } else if (localStorage.getItem('QLangue') == "_en") {
-            toTheBatCave("_en");
-        }
-
+        var randomInt = Math.floor((Math.random() * fond.length));
+        finalQuery["randomInt"] = randomInt;
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[finalQuery["randomInt"]].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[finalQuery["randomInt"]].nom;
+    </script>
+    <script>
         function toTheBatCave(selector) {
-            localStorage.setItem('QLangue', selector);
+            finalQuery["QLangue"] = selector;
             document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
             document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
             document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
@@ -82,7 +73,6 @@
             document.getElementById('boiteGrosTitreLigne2').innerHTML = meta_text['boiteGrosTitreLigne2' + selector];
             document.getElementById('boitePetitTitreLigne1').innerHTML = meta_text['boitePetitTitreLigne1' + selector];
             document.getElementById('boitePetitTitreLigne2').innerHTML = meta_text['boitePetitTitreLigne2' + selector];
-
             if (selector == "_fr") {
                 document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
                 document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
@@ -101,7 +91,36 @@
                 document.getElementById('boiteGrosTitreLigne2').style.marginLeft = "0vw";
             }
         }
-
+    </script>
+    <script>
+        try {
+            var QLangue = finalQuery["QLangue"];
+        }
+        catch (err) {}
+        if (QLangue == '_fr') {
+            toTheBatCave("_fr");
+        }
+        else if (QLangue == '_en') {
+            toTheBatCave('_en');
+        }
+        else {
+            toTheBatCave('_en');
+        }
+    </script>
+    <script>
+        function changePage(targetstr) {
+            var finDuGame = "";
+            if (finalQuery["QLangue"] != undefined && finalQuery["randomInt"] != undefined) {
+                finDuGame = "?QLangue=" + finalQuery["QLangue"] + "&randomInt=" + finalQuery["randomInt"];
+            }
+            else if (finalQuery["QLangue"] != undefined) {
+                finDuGame = "?QLangue=" + finalQuery["QLangue"];
+            }
+            else if (finalQuery["randomInt"] != undefined) {
+                finDuGame = "?randomInt=" + finalQuery["randomInt"];
+            }
+            window.location.href = targetstr + finDuGame;
+        }
     </script>
 </body>
 

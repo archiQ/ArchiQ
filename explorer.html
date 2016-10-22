@@ -7,53 +7,50 @@
     <title>Quentin Aubry - Portfolio</title>
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="slider.css">
-    <link rel="icon" type="image/ico" href="favicon.ico" />
-</head>
+    <link rel="icon" type="image/ico" href="favicon.ico" /> </head>
 
 <body>
     <div id="wrapper">
         <div class="w3-row BigColonne">
-            <div class="w3-col l8 m8 BigColonne" id="colonneGauche2">
-            </div>
-            <div id="bouboule2">
-            </div>
+            <div class="w3-col l8 m8 BigColonne" id="colonneGauche2"> </div>
+            <div id="bouboule2"> </div>
             <div class="w3-col l4 m4 BigColonne" id="colonneDroite2">
                 <div id="overlaySombre2"></div>
                 <div id="wrapperDesc">
                     <div id="wrapperCache">
-                        <div id="boiteTitre">
-                        </div>
-                        <div id="boiteDesc">
-                        </div>
-                    </div>
-                    <img src="img/BARREDESC.png" id="barreDesc">
-                </div>
+                        <div id="boiteTitre"> </div>
+                        <div id="boiteDesc"> </div>
+                    </div> <img src="img/BARREDESC.png" id="barreDesc"> </div>
             </div>
-        </div>
-        <i><div id="boitePetitText">
+        </div> <i><div id="boitePetitText">
             Machin Machin 
         </div></i>
-        <div id="wrapperSlider">
-        </div>
+        <div id="wrapperSlider"> </div>
         <a href=archiworksho.html><img src="img/FLECHEG.png" id="flechegauche"></a>
-        <div id="languageSelector">
-            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-        </div>
-
+        <div id="languageSelector"> <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a> </div>
     </div>
     <script src="contenu.js"></script>
     <script>
-        if (localStorage.getItem('FondID', randomInt) != null) {
-            var randomInt = localStorage.getItem('FondID', randomInt);
-        } else {
-            var randomInt = Math.floor((Math.random() * fond.length));
+        try {
+            var finalQuery = {};
+            var laQuery = location.search.split('?')[1].split('&');
+            for (i in laQuery) {
+                finalQuery[laQuery[i].split('=')[0]] = laQuery[i].split('=')[1];
+            }
         }
-        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
-        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
-
-
-        var index = parseInt(location.search.split('?')[1].split('&')[0].split('=')[1]);
-        var choixCatalogue = location.search.split('?')[1].split('&')[1].split('=')[1];
+        catch (err) {
+            var finalQuery = {};
+        }
+    </script>
+    <script>
+        var randomInt = Math.floor((Math.random() * fond.length));
+        finalQuery["randomInt"] = randomInt;
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[finalQuery["randomInt"]].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[finalQuery["randomInt"]].nom;
+    </script>
+    <script>
+        var index = finalQuery["ElementChoisi"];
+        var choixCatalogue = finalQuery["projpubli"];
         if (choixCatalogue == "projet") {
             document.getElementById('boiteTitre').innerHTML = projets[index].titre;
             document.getElementById('boiteDesc').innerHTML = projets[index].description_en;
@@ -69,10 +66,8 @@
             }
             leTextHTML += '</div></div>';
             document.getElementById('wrapperSlider').innerHTML += leTextHTML;
-
-
-        } else if (choixCatalogue == "publications") {
-            console.log("ok");
+        }
+        else if (choixCatalogue == "publications") {
             document.getElementById('boiteTitre').innerHTML = publications[index].titre;
             document.getElementById('boiteDesc').innerHTML = publications[index].description_en;
             var leTextHTML = '<div class="slideshow-container">';
@@ -87,9 +82,7 @@
             }
             leTextHTML += '</div></div>';
             document.getElementById('wrapperSlider').innerHTML += leTextHTML;
-
         }
-
     </script>
     <script>
         var slideIndex = 1;
@@ -123,46 +116,44 @@
             slides[slideIndex - 1].style.display = "block";
             if (slides[slideIndex - 1].childNodes[0].childNodes[0].offsetWidth > slides[slideIndex - 1].childNodes[0].childNodes[0].offsetHeight) {
                 slides[slideIndex - 1].childNodes[0].childNodes[0].style.width = "100%";
-            } else {
+            }
+            else {
                 slides[slideIndex - 1].childNodes[0].childNodes[0].style.height = "100%";
             }
             dots[slideIndex - 1].className += " active";
         }
         var tournage = true;
-        setInterval(function() {
+        setInterval(function () {
             if (tournage) {
                 showSlides(slideIndex += 1);
             }
         }, 4000); //ICI REPOSE LE NOMBRE DE MILLISECONDES ENTRE CHAQUE CHANGEMENT
-
     </script>
     <script>
-        if (localStorage.getItem('QLangue') == null) {
-            localStorage.setItem('QLangue', '_en');
+        try {
+            var QLangue = finalQuery["QLangue"];
         }
-        if (localStorage.getItem('QLangue') == "_fr") {
+        catch (err) {}
+        if (QLangue == '_fr') {
             toTheBatCave("_fr");
-        } else if (localStorage.getItem('QLangue') == "_en") {
-            toTheBatCave("_en");
         }
-
-        document.getElementById('flechegauche').parentNode.href = location.search.split('?')[1].split('&')[2].split('=')[1];
+        else {
+            toTheBatCave('_en');
+        }
+        document.getElementById('flechegauche').parentNode.href = location.search.split('?')[1].split('&')[3].split('=')[1];
 
         function toTheBatCave(selector) {
-            localStorage.setItem('QLangue', selector);
-
-            var index = localStorage.getItem('ElementChoisi');
-            var choixCatalogue = localStorage.getItem('projpubli');
-            console.log("description" + selector);
+            finalQuery["QLangues"] = selector;
+            var index = finalQuery["ElementChoisi"];
+            var choixCatalogue = finalQuery["projpubli"];
             if (choixCatalogue == "projet") {
                 document.getElementById('boiteTitre').innerHTML = projets[index].titre;
                 document.getElementById('boiteDesc').innerHTML = projets[index]["description" + selector];
-
-            } else if (choixCatalogue == "publications") {
+            }
+            else if (choixCatalogue == "publications") {
                 document.getElementById('boiteTitre').innerHTML = publications[index].titre;
                 document.getElementById('boiteDesc').innerHTML = publications[index]["description" + selector];
             }
-
             if (selector == "_fr") {
                 document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
                 document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
@@ -177,9 +168,7 @@
                 document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.1vw";
             }
         }
-
     </script>
-    <link rel="stylesheet" href="index.css">
-</body>
+    <link rel="stylesheet" href="index.css"> </body>
 
 </html>

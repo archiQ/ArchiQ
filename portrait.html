@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="favicon.ico" />
-</head>
+    <link rel="icon" type="image/ico" href="favicon.ico" /> </head>
 
 <body>
     <div id="wrapper">
@@ -21,7 +20,6 @@
                 </div>
                 <div id="boiteCompetences">
                     <div id="boiteCacheChache">
-
                         <ul>
                             <li><a href="archiworksho.html" id="compet1">architecture •workshops</a></li>
                             <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
@@ -30,15 +28,11 @@
                     </div>
                 </div>
             </div>
-            <div id="bouboule">
-
-            </div>
+            <div id="bouboule"> </div>
             <div class="w3-col l8 m8 BigColonne" id="colonneDroite">
                 <div id="CVhandler">
                     <div id="boiteCV">
-                        <div id="boiteCVPng">
-                            <img src="img/CV_en.png">
-                        </div>
+                        <div id="boiteCVPng"> <img src="img/CV_en.png"> </div>
                         <div id="boitePhoto"><img src="img/Q.jpg"></div>
                         <div id="boiteCoord">
                             <div id="coord1">
@@ -60,46 +54,41 @@
                         <div id="btnDL">
                             <a href="img/CV_en.pdf"><img src="img/DL.png"></a>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-        <i><div id="boitePetitText">
+        </div> <i><div id="boitePetitText">
              
         </div></i>
-        <div id="languageSelector">
-            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-        </div>
+        <div id="languageSelector"> <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> / <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a> </div>
     </div>
     <script src="contenu.js"></script>
     <script>
-        if (localStorage.getItem('FondID', randomInt) != null) {
-            var randomInt = localStorage.getItem('FondID', randomInt);
-        } else {
-            var randomInt = Math.floor((Math.random() * fond.length));
+        try {
+            var finalQuery = {};
+            var laQuery = location.search.split('?')[1].split('&');
+            for (i in laQuery) {
+                finalQuery[laQuery[i].split('=')[0]] = laQuery[i].split('=')[1];
+            }
         }
-        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
-        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
-
+        catch (err) {
+            var finalQuery = {};
+        }
     </script>
     <script>
-        if (localStorage.getItem('QLangue') == null) {
-            localStorage.setItem('QLangue', '_en');
+        if (finalQuery["randomInt"] == undefined) {
+            var randomInt = Math.floor((Math.random() * fond.length));
+            finalQuery["randomInt"] = randomInt;
         }
-
-        if (localStorage.getItem('QLangue') == "_fr") {
-            toTheBatCave("_fr");
-        } else if (localStorage.getItem('QLangue') == "_en") {
-            toTheBatCave("_en");
-        }
-
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[finalQuery["randomInt"]].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[finalQuery["randomInt"]].nom;
+    </script>
+    <script>
         function toTheBatCave(selector) {
-            localStorage.setItem('QLangue', selector);
+            finalQuery["QLangue"] = selector;
             document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
             document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
             document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
-
             if (selector == "_fr") {
                 document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
                 document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
@@ -118,7 +107,18 @@
                 document.getElementById('btnDL').childNodes[0].href = "img/CV_en.pdf";
             }
         }
-
+        try {
+            var QLangue = finalQuery["QLangue"];
+        }
+        catch (err) {
+            var QLangue = "_en";
+        }
+        if (QLangue == '_fr') {
+            toTheBatCave("_fr");
+        }
+        else {
+            toTheBatCave('_en');
+        }
     </script>
 </body>
 

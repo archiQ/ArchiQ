@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="icon" type="image/ico" href="favicon.ico" />
-</head>
+    <link rel="icon" type="image/ico" href="favicon.ico" /> </head>
 
 <body>
     <div id="wrapper">
@@ -22,99 +21,56 @@
                 <div id="boiteCompetences">
                     <div id="boiteCacheChache">
                         <ul>
-                            <li><a href="archiworksho.html" class="lienActif" id="compet1">architecture •workshops</a></li>
+                            <li><a href="#" onclick="changePage('archiworksho.html')" id="compet1">architecture •workshops</a></li>
                             <li>
                                 <ul id="ListeElements"></ul>
                             </li>
-                            <li><a href="publications.html" id="compet2">publications •graphisme</a></li>
-                            <li><a href="portrait.html" id="compet3">portrait •compétences</a></li>
+                            <li><a href="#" onclick="changePage('publications.html')" id="compet2">publications •graphisme</a></li>
+                            <li><a href="#" onclick="changePage('portrait.html')" id="compet3">portrait •compétences</a></li>
                         </ul>
-                    </div>
-                    <img src="img/BARRECOMP.png" id="barreComp">
-                </div>
+                    </div> <img src="img/BARRECOMP.png" id="barreComp"> </div>
             </div>
-            <div id="bouboule">
-
-            </div>
+            <div id="bouboule"> </div>
             <div class="w3-col l8 m8 BigColonne" id="colonneDroite">
                 <div id="wrapperGallerie">
                     <div id="GallerieCache">
-                        <div id="boiteGallerie" class="w3-row">
-
-                        </div>
+                        <div id="boiteGallerie" class="w3-row"> </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <i><div id="boitePetitText">
+        </div> <i><div id="boitePetitText">
              
         </div></i>
-        <div id="languageSelector">
-            <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a>
-        </div>
-
+        <div id="languageSelector"> <a href="#" onclick="toTheBatCave('_en');return false;">EN</a> • <a href="#" onclick="toTheBatCave('_fr');return false;">FR</a> </div>
     </div>
     <script src="contenu.js"></script>
     <script>
-        if (localStorage.getItem('FondID', randomInt) != null){
-            var randomInt = localStorage.getItem('FondID', randomInt);
+        try {
+            var finalQuery = {};
+            var laQuery = location.search.split('?')[1].split('&');
+            for (i in laQuery) {
+                finalQuery[laQuery[i].split('=')[0]] = laQuery[i].split('=')[1];
+            }
         }
-        else {
+        catch (err) {
+            var finalQuery = {};
+        }
+    </script>
+    <script>
+        if (finalQuery["randomInt"] == undefined) {
             var randomInt = Math.floor((Math.random() * fond.length));
+            finalQuery["randomInt"] = randomInt;
         }
-        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[randomInt].image + ")";
-        document.getElementById('boitePetitText').innerHTML = fond[randomInt].nom;
-
+        document.getElementById('wrapper').style.backgroundImage = "url(" + fond[finalQuery["randomInt"]].image + ")";
+        document.getElementById('boitePetitText').innerHTML = fond[finalQuery["randomInt"]].nom;
     </script>
     <script src="Actualizer.js"></script>
     <script>
-        var lesMinis = document.getElementsByClassName('w3-col l3 m3 s3');
-        for (var i = 0; i < lesMinis.length; i++) {
-            document.getElementById('projetn' + i).onclick = function(element) {
-                localStorage.setItem('ElementChoisi', parseInt(element.srcElement.parentElement.id.split('n')[1]));
-                window.location = "explorer.html"+"?ElementChoisi="+parseInt(element.srcElement.parentElement.id.split('n')[1])+"&projpubli=projet"+"&previous=archiworksho.html";
-            }
-
-            document.getElementById('projetn' + i).onmouseenter = function(element) {
-                element.srcElement.childNodes[0].src = projets[parseInt(element.srcElement.id.split('n')[1])].miniature_t;
-                document.getElementsByTagName('ul')[1].childNodes[parseInt(element.srcElement.id.split('n')[1])].style.color = "#fff";
-            }
-            document.getElementById('projetn' + i).onmouseleave = function(element) {
-                element.srcElement.childNodes[0].src = projets[parseInt(element.srcElement.id.split('n')[1])].miniature;
-                document.getElementsByTagName('ul')[1].childNodes[parseInt(element.srcElement.id.split('n')[1])].style.color = "";
-            }
-            document.getElementById('projetz' + i).onmouseenter = function(element) {
-                document.getElementById('projetn' + parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature_t;
-            }
-            document.getElementById('projetz' + i).onmouseleave = function(element) {
-                document.getElementById('projetn' + parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature;
-            }
-
-            document.getElementById('projetz' + i).onclick = function(element) {
-                localStorage.setItem('ElementChoisi', parseInt(element.srcElement.id.split('z')[1]));
-                localStorage.setItem('projpubli', 'projet');
-                localStorage.setItem('previous', 'archiworksho.html');
-                window.location = "explorer.html"+"?ElementChoisi="+parseInt(element.srcElement.id.split('z')[1])+"&projpubli=projet"+"&previous=archiworksho.html";
-            }
-        }
-
-    </script>
-    <script>
-        if (localStorage.getItem('QLangue') == null){
-            localStorage.setItem('QLangue', '_en');
-        }
-        if (localStorage.getItem('QLangue') == "_fr") {
-            toTheBatCave("_fr");
-        } else if (localStorage.getItem('QLangue') == "_en") {
-            toTheBatCave("_en");
-        }
-
         function toTheBatCave(selector) {
-            localStorage.setItem('QLangue', selector);
+            finalQuery["QLangue"] = selector;
             document.getElementById('compet1').innerHTML = meta_text['compet1' + selector];
             document.getElementById('compet2').innerHTML = meta_text['compet2' + selector];
             document.getElementById('compet3').innerHTML = meta_text['compet3' + selector];
-
             if (selector == "_fr") {
                 document.getElementById('languageSelector').childNodes[3].innerHTML = document.getElementById('languageSelector').childNodes[3].innerHTML.bold();
                 document.getElementById('languageSelector').childNodes[1].innerHTML = "EN";
@@ -129,7 +85,91 @@
                 document.getElementById('languageSelector').childNodes[3].style.fontSize = "1.1vw";
             }
         }
-
+    </script>
+    <script>
+        try {
+            var QLangue = finalQuery["QLangue"];
+        }
+        catch (err) {
+            var QLangue = "_en";
+        }
+        if (QLangue == '_fr') {
+            toTheBatCave("_fr");
+        }
+        else {
+            toTheBatCave('_en');
+        }
+        var lesMinis = document.getElementsByClassName('w3-col l3 m3 s3');
+        for (var i = 0; i < lesMinis.length; i++) {
+            document.getElementById('projetn' + i).onclick = function (element) {
+                    finalQuery["ElementChoisi"]= parseInt(element.srcElement.parentElement.id.split('n')[1]);
+                    finalQuery["projpubli"]= "projet";
+                    finalQuery["previous"]= "archiworksho.html";
+                    changePage("explorer.html");
+                    //window.location = "explorer.html" + ajoutLocation + "&ElementChoisi=" + parseInt(element.srcElement.parentElement.id.split('n')[1]) + "&projpubli=projet" + "&previous=archiworksho.html";
+            }
+            document.getElementById('projetn' + i).onmouseenter = function (element) {
+                element.srcElement.childNodes[0].src = projets[parseInt(element.srcElement.id.split('n')[1])].miniature_t;
+                document.getElementsByTagName('ul')[1].childNodes[parseInt(element.srcElement.id.split('n')[1])].style.color = "#fff";
+            }
+            document.getElementById('projetn' + i).onmouseleave = function (element) {
+                element.srcElement.childNodes[0].src = projets[parseInt(element.srcElement.id.split('n')[1])].miniature;
+                document.getElementsByTagName('ul')[1].childNodes[parseInt(element.srcElement.id.split('n')[1])].style.color = "";
+            }
+            document.getElementById('projetz' + i).onmouseenter = function (element) {
+                document.getElementById('projetn' + parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature_t;
+            }
+            document.getElementById('projetz' + i).onmouseleave = function (element) {
+                document.getElementById('projetn' + parseInt(element.srcElement.id.split('z')[1])).childNodes[0].src = projets[parseInt(element.srcElement.id.split('z')[1])].miniature;
+            }
+            document.getElementById('projetz' + i).onclick = function (element) {
+                finalQuery["ElementChoisi"]= parseInt(element.srcElement.id.split('z')[1]);
+                finalQuery["projpubli"]= "projet";
+                finalQuery["previous"]= "archiworksho.html";
+                changePage("explorer.html");
+            }
+        }
+    </script>
+    <script>
+        function changePage(targetstr) {
+            var finDuGame = "";
+            if (finalQuery["QLangue"] != undefined) {
+                finDuGame += "?QLangue=" + finalQuery["QLangue"];
+            }
+            if (finalQuery["randomInt"] != undefined) {
+                if (finDuGame == "") {
+                    finDuGame += "?randomInt=" + finalQuery["randomInt"];
+                }
+                else {
+                    finDuGame += "&randomInt=" + finalQuery["randomInt"];
+                }
+            }
+            if (finalQuery["ElementChoisi"] != undefined) {
+                if (finDuGame == "") {
+                    finDuGame += "?ElementChoisi=" + finalQuery["ElementChoisi"];
+                }
+                else {
+                    finDuGame += "&ElementChoisi=" + finalQuery["ElementChoisi"];
+                }
+            }
+            if (finalQuery["previous"] != undefined) {
+                if (finDuGame == "") {
+                    finDuGame += "?previous=" + finalQuery["previous"];
+                }
+                else {
+                    finDuGame += "&previous=" + finalQuery["previous"];
+                }
+            }
+            if (finalQuery["projpubli"] != undefined) {
+                if (finDuGame == "") {
+                    finDuGame += "?projpubli=" + finalQuery["projpubli"];
+                }
+                else {
+                    finDuGame += "&projpubli=" + finalQuery["projpubli"];
+                }
+            }
+            window.location.href = targetstr + finDuGame;
+        }
     </script>
 </body>
 
