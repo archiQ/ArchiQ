@@ -330,6 +330,12 @@ div.w3-col.l3.m3.s3>img {
 .alignright{
     text-align: right;
 }
+.alignleft{
+    text-align: left;
+}
+.aligncenter{
+    text-align: center;
+}
 #coord1 > p {
     margin-top: -6%;
 }
