@@ -39,7 +39,7 @@ var projets = [
         "titre":"les ouches suspendues",
         "description_en":"Description à venir ...",
         "description_fr":"Soon ...",
-        "images":["img/ouches (1).png","img/ouches (2).png","img/ouches (3).png","img/ouches (4).png","img/ouches (5).png","img/ouches (6).png","img/ouches (7).png","img/ouches (8).png","img/ouches (9).png","img/ouches (10).png","img/ouches (11).png","img/ouches (12).png","img/ouches (13).png","img/ouches (14).png","img/ouches (15).png","img/ouches (16).png","img/ouches (17).png","img/ouches (18).jpg","img/ouches (19).jpg","img/ouches (20).jpg","img/ouches (21).jpg","img/ouches (22).png",],
+        "images":["img/ouches (1).jpg","img/ouches (2).jpg","img/ouches (3).jpg","img/ouches (4).jpg","img/ouches (5).jpg","img/ouches (6).jpg","img/ouches (7).jpg","img/ouches (8).jpg","img/ouches (9).jpg","img/ouches (10).jpg","img/ouches (11).jpg","img/ouches (12).jpg","img/ouches (13).jpg","img/ouches (14).jpg","img/ouches (15).jpg","img/ouches (16).jpg","img/ouches (17).jpg","img/ouches (18).jpg","img/ouches (19).jpg","img/ouches (20).jpg","img/ouches (21).jpg","img/ouches (22).jpg",],
         "annee":"2013",
         "miniature":"img/mini/ouches.jpg",
         "miniature_t":"img/mini/ouchesb.jpg"
