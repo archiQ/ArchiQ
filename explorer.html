@@ -43,8 +43,10 @@
         }
     </script>
     <script>
-        var randomInt = Math.floor((Math.random() * fond.length));
-        finalQuery["randomInt"] = randomInt;
+        if (finalQuery["randomInt"] == undefined) {
+            var randomInt = Math.floor((Math.random() * fond.length));
+            finalQuery["randomInt"] = randomInt;
+        }
         document.getElementById('wrapper').style.backgroundImage = "url(" + fond[finalQuery["randomInt"]].image + ")";
         document.getElementById('boitePetitText').innerHTML = fond[finalQuery["randomInt"]].nom;
     </script>
