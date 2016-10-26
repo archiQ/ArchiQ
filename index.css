@@ -321,6 +321,10 @@ div.w3-col.l3.m3.s3>img {
     top: 0vh;
     height: 100%;
 }
+iframe {
+    height: 100%;
+    width: 100%;
+}
 #boiteCVPng > img {
     width: 100%;
 }

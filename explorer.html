@@ -58,9 +58,16 @@
             document.getElementById('boiteDesc').innerHTML = projets[index].description_en;
             var leTextHTML = '<div class="slideshow-container">';
             for (var i = 0; i < projets[index].images.length; i++) {
-                leTextHTML += '<div class="mySlides fade"><div class="containerCentrage"><img src="';
-                leTextHTML += projets[index].images[i];
-                leTextHTML += '"></div></div>';
+                if (projets[index].images[i].split('/')[0] != "img") {
+                    leTextHTML += '<div class="mySlides fade"><div class="containerCentrage">';
+                    leTextHTML += projets[index].images[i];
+                    leTextHTML += '</div></div>';
+                }
+                else {
+                    leTextHTML += '<div class="mySlides fade"><div class="containerCentrage"><img src="';
+                    leTextHTML += projets[index].images[i];
+                    leTextHTML += '"></div></div>';
+                }
             }
             leTextHTML += '<a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a></div><br><div style="text-align:center">';
             for (var i = 0; i < projets[index].images.length; i++) {
