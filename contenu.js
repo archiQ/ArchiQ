@@ -103,12 +103,12 @@ var publications = [
     },
 	{
        "titre":"rasportine",
-		"description_en":"",
-		"description_fr":"",
-        "images":['<iframe width="560" height="315" src="https://www.youtube.com/embed/ahkHIy7ckuM" frameborder="0" allowfullscreen></iframe>',"img/memoire (8).jpg",],
+		"description_en":"Soon ...",
+		"description_fr":"Description à venir ...",
+        "images":['<iframe width="560" height="315" src="https://www.youtube.com/embed/ahkHIy7ckuM" frameborder="0" allowfullscreen></iframe>',"img/raspo (0).jpg","img/raspo (1).jpg","img/raspo (2).jpg","img/raspo (3).jpg","img/raspo (4).jpg","img/raspo (5).jpg","img/raspo (6).jpg","img/raspo (7).jpg","img/raspo (8).jpg","img/raspo (9).jpg","img/raspo (10).jpg",],
         "annee":"2016",
-        "miniature":"img/mini/memoire.jpg" ,
-        "miniature_t":"img/mini/memoireb.jpg"
+        "miniature":"img/mini/raspo.jpg" ,
+        "miniature_t":"img/mini/raspob.jpg"
     },
     ];
 
